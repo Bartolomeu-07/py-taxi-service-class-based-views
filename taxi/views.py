@@ -18,8 +18,7 @@ def index(request):
 
 class ManufacturerListView(generic.ListView):
     model = Manufacturer
-    queryset = Manufacturer.objects.all()
-    ordering = ["name"]
+    queryset = Manufacturer.objects.order_by("name")
     paginate_by = 5
 
 
@@ -27,7 +26,6 @@ class CarListView(generic.ListView):
     model = Car
     queryset = Car.objects.select_related("manufacturer")
     paginate_by = 5
-    template_name = "taxi/car_list.html"
 
 
 class CarDetailView(generic.DetailView):
